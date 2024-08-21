@@ -16,10 +16,6 @@ int cnt_num(int arr[], int size, int num){
     return cnt;
 }
 
-int cnt_using_hashmap(int hashmap[], int size, int num){
-    
-}
-
 int cnt_num_using_map(unordered_map<int,int> mp,int num){
     // TC: 1
     // SC: O(N)
@@ -74,6 +70,7 @@ int main(){
     // you could have taken 256 size array
     */
 
+    /*
     // STL map: map and unordered_map
     // map stores all values in sorted order, storing or fecthing takes log(n)  time complexity in all cases i.e best, avg, worst case
     // unordered_map stores all values in unsorted manner. stroing a fecthing in avg and best case is O(i) but worst case is O(N). where n is number of element in the map. 
@@ -107,7 +104,10 @@ int main(){
 
     // any data strucure can be a key in a map. eg->map<pair<int,int>,char> mpp;. but key can only be a single datatype in unordered map
 
+    */
 
+//    Q1 https://www.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/0
+//     Q2 unable to do
 
 
   
