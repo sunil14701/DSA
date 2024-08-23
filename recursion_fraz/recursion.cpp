@@ -171,9 +171,51 @@ void combination1(vector<int> &vec,int i, vector<int> output,int &k){
     output.push_back(vec[i]);
     combination1(vec, i+1, output,k);
     output.pop_back();
-    combination1(vec, i+1, output,k);
+    if(i != vec.size()-1){
+        combination1(vec, i+1, output,k);
+    }
 }
 
+// for +ve number only
+void combination2(vector<int> &input,vector<int>output, int i,  int &sum, int add_sum){
+    if(i > input.size() ) return;
+    if(sum == add_sum and i == input.size()){
+        for(int j=0;j<output.size();j++){
+            cout << output[j] << " ";
+        }
+        cout << endl;
+        return;
+    }
+    
+    add_sum += input[i];
+    output.push_back(input[i]);
+    combination2(input, output, i+1, sum, add_sum);
+    add_sum -= input[i];
+    output.pop_back();
+    while(input[i] == input[i+1]) i++;
+    combination2(input, output, i+1, sum, add_sum);
+}
+
+void combination3(vector<int> &vec, int i, vector<int> output, int &target_sum, int &target_size, int add_sum){
+    if(i> vec.size()) return ;
+    if(output.size()>target_size or add_sum > target_sum) return;
+    if(output.size() == target_size and add_sum == target_sum){
+        for(int j=0;j<output.size();j++){ 
+            cout << output[j] << " ";
+        }
+        cout << endl;
+        return;
+    }
+
+    add_sum += vec[i];
+    output.push_back(vec[i]);
+    combination3(vec, i+1, output, target_sum, target_size, add_sum);
+    add_sum -= vec[i];
+    output.pop_back();
+
+    while(vec[i] == vec[i+1] and i+1< vec.size()) i++;
+    combination3(vec, i+1, output, target_sum, target_size, add_sum);
+}
 
 int main(){
     // sum of n natural numbers
@@ -235,15 +277,22 @@ int main(){
     vector<int> vec(size);
     for(int i=0;i<size;i++) cin >> vec[i];
     vector<int> output;
-    set<vector<int>> st;
-    set<int> s;
+    // set<vector<int>> st;
+    // set<int> s;
     // print_unique_subsets(vec,0,output,st);
     // print_unique_subsets2(vec,0,output);
 
 
-    int k = 4;
-    cin >> k;
-    combination1(vec,0,output,k);
+    // int k = 4;
+    // cin >> k;
+    // combination1(vec,0,output,k);
+    // int sum = 0;
+    // cin >> sum;
+    // combination2(vec,output,0,sum, 0);
+
+    int target_sum, target_size;
+    cin >> target_sum >> target_size ;
+    combination3(vec, 0,output,target_sum, target_size,0);
 
 
 
