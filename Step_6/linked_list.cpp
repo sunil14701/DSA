@@ -260,7 +260,6 @@ ListNode *insertBeforeValue(ListNode *head, int x, int val)
 
 int main()
 {
-
     // l1
     // object vs pointer
     ListNode obj = ListNode(2); // w/o new keyword its only object
